@@ -175,7 +175,7 @@ export default function Index() {
             onClick={() => setActiveSection("new-user")}
             className="w-full sm:w-auto min-w-[280px] md:min-w-[325px] h-20 px-6 bg-[#313030] text-white rounded-xl border-[1.5px] border-black shadow-[0_8px_4px_0_rgba(0,0,0,0.5)] text-xl md:text-2xl font-medium hover:bg-[#3f3f3f] transition-colors"
           >
-            Я новеньк��й
+            Я новенький
           </button>
           <button
             onClick={() => navigate("/login")}
