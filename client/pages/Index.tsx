@@ -55,7 +55,7 @@ export default function Index() {
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl text-white/55 text-center font-medium leading-[145%] max-w-3xl">
             Первая на рынке социальная сеть для тех, кто хочет заниматься спортом
-            и играть одновреме��но
+            и играть одновременно
           </p>
         </div>
 
