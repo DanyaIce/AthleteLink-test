@@ -5,7 +5,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState("Захар Смирнов");
   const [username, setUsername] = useState("pauchuck");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("НЕМЕЦКИЙ ВЕРТОЛЁТ PANZERKAMPFGEN-5846");
   const [city, setCity] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [telegram, setTelegram] = useState("@Lovely_Specty");
