@@ -321,7 +321,7 @@ export default function Profile() {
 
                 {/* Gender */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
+                  <label className="block text-black/80 text-base mb-2 mt-30">
                     Пол
                   </label>
                   <div className="relative">
