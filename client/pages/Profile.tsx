@@ -33,12 +33,12 @@ export default function Profile() {
         {/* Sidebar */}
         <div className="w-[76px] border-r-2 border-[#5F5C5C] relative flex flex-col items-center pt-8 gap-12">
           {/* Navigation Icons */}
-          <div className="space-y-8 flex flex-col items-center mt-48">
+          <div className="space-y-8 flex flex-col items-center">
             {/* Dashboard Icon - Active */}
             <div className="relative">
-              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0"></div>
+              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10 mt-6 "></div>
               <svg
-                className="w-[21px] h-[22px] relative z-10"
+                className="w-[21px] h-[22px] relative z-10 mt-10"
                 viewBox="0 0 21 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ export default function Profile() {
 
             {/* Messages Icon */}
             <svg
-              className="w-[21px] h-[21px] opacity-50 mt-20"
+              className="w-[21px] h-[21px] opacity-50"
               viewBox="0 0 21 21"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ export default function Profile() {
 
             {/* Settings Icon */}
             <svg
-              className="w-[21px] h-[22px] opacity-50 mt-20"
+              className="w-[21px] h-[22px] opacity-50"
               viewBox="0 0 21 22"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -266,22 +266,22 @@ export default function Profile() {
           </div>
 
           {/* Profile Card */}
-          <div className="rounded-[10px] overflow-hidden">
+          <div className="rounded-[10px] overflow-hidden ">
             {/* Header Section */}
-            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#001AFF]/30 opacity-50 relative">
-              <div className="absolute inset-0 flex items-center px-7 mt-20">
+            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#001AFF]/30 opacity-50 relative ">
+              <div className="absolute inset-0 flex items-center px-7 mt-32">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/344dcf4b50f86e9e2496c7dbc315e853b4b8c063?width=178"
                   alt={fullName}
                   className="w-[89px] h-[86px] rounded-full absolute left-7 top-[28px]"
                 />
-                <div className="ml-[120px] mt-350">
+                <div className="ml-[120px] mt-28">
                   <h2 className="text-black text-xl font-medium">{fullName}</h2>
                   <p className="text-black/50 text-base">{email}</p>
                 </div>
                 <button
                   onClick={handleSaveSettings}
-                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base"
+                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base mt-32"
                 >
                   Сохранить настройки
                 </button>
@@ -289,11 +289,11 @@ export default function Profile() {
             </div>
 
             {/* Form Section */}
-            <div className="bg-white/50 p-8">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6 mt-24">
+            <div className="bg-white/50 p-8 h-[600px]">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-black/80 text-base mt-15">
+                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
                     Фамилия и имя
                   </label>
                   <input
@@ -301,13 +301,13 @@ export default function Profile() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Захар Смирнов"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-3"
+                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
                   />
                 </div>
 
                 {/* Username */}
                 <div>
-                  <label className="block text-black/80 text-base mt-15">
+                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
                     Имя пользователя
                   </label>
                   <input
@@ -315,13 +315,13 @@ export default function Profile() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="pauchuck"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-3"
+                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
                   />
                 </div>
 
                 {/* Gender */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-3">
+                  <label className="block text-black/80 text-base mb-2">
                     Пол
                   </label>
                   <div className="relative">
@@ -330,14 +330,14 @@ export default function Profile() {
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
                       placeholder="Выберите пол"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
                     />
                     <button
                       onClick={() => setShowGenderDropdown(!showGenderDropdown)}
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[22px] h-[21px] opacity-50 mt-3"
+                        className="w-[22px] h-[21px] opacity-50"
                         viewBox="0 0 22 21"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +357,7 @@ export default function Profile() {
 
                 {/* City */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-3">
+                  <label className="block text-black/80 text-base mb-2">
                     Город
                   </label>
                   <div className="relative">
@@ -366,14 +366,14 @@ export default function Profile() {
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                       placeholder="Введите или начните поиск через выпадающее меню"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
                     />
                     <button
                       onClick={() => setShowCityDropdown(!showCityDropdown)}
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[20px] h-[21px] opacity-50 mt-3"
+                        className="w-[20px] h-[21px] opacity-50"
                         viewBox="0 0 20 21"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -393,7 +393,7 @@ export default function Profile() {
 
                 {/* Birthdate */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-3">
+                  <label className="block text-black/80 text-base mb-2">
                     Дата рождения
                   </label>
                   <div className="relative">
@@ -402,7 +402,7 @@ export default function Profile() {
                       value={birthdate}
                       onChange={(e) => setBirthdate(e.target.value)}
                       placeholder="Введите в формате ДД.ММ.ГГГГ"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
                     />
                     <button
                       onClick={() =>
@@ -411,7 +411,7 @@ export default function Profile() {
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[22px] h-[20px] opacity-50 mt-3"
+                        className="w-[22px] h-[20px] opacity-50"
                         viewBox="0 0 22 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -431,7 +431,7 @@ export default function Profile() {
 
                 {/* Telegram */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-3">
+                  <label className="block text-black/80 text-base mb-2">
                     Идентификатор пользователя в Telegram
                   </label>
                   <div className="relative">
@@ -440,7 +440,7 @@ export default function Profile() {
                       value={telegram}
                       onChange={(e) => setTelegram(e.target.value)}
                       placeholder="@Lovely_Specty"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
                     />
                     <button
                       onClick={() =>
@@ -470,11 +470,11 @@ export default function Profile() {
 
               {/* Email Section */}
               <div className="mt-12">
-                <h3 className="text-black text-lg font-medium mt-3">
+                <h3 className="text-black text-lg font-medium mb-4">
                   Адрес электронной почты
                 </h3>
                 <div className="flex items-start gap-4">
-                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0 mt-3">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0">
                     <svg
                       className="w-[23px] h-[20px]"
                       viewBox="0 0 23 20"
