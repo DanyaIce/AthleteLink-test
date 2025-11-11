@@ -339,8 +339,9 @@ export default function Requests() {
                     style={{
                       backgroundImage:
                         "url('https://cdn.builder.io/api/v1/image/assets%2F9b4b6868ed8d4ab0841339e996a44e0f%2F29814a62ea5a4dbaab3e007976816fb6?format=webp&width=800')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
+                      backgroundSize: "120px 120px",
+                      backgroundPosition: "0 0",
+                      backgroundRepeat: "repeat",
                       opacity: 0.05,
                     }}
                   ></div>
