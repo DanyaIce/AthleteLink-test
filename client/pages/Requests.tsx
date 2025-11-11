@@ -84,7 +84,7 @@ export default function Requests() {
           {/* Navigation Icons */}
           <div className="space-y-8 flex flex-col items-center mt-96">
             {/* Dashboard Icon */}
-            <button onClick={() => navigate('/profile')}>
+            <button onClick={() => navigate("/profile")}>
               <svg
                 className="w-[21px] h-[22px] opacity-50"
                 viewBox="0 0 21 22"
@@ -384,7 +384,7 @@ export default function Requests() {
                         <div className="flex items-center gap-3">
                           <div
                             className={`w-[23px] h-[23px] rounded-full border border-black ${getResultCircleColor(
-                              request.resultColor
+                              request.resultColor,
                             )}`}
                           ></div>
                           <span className="text-black text-2xl font-light">
