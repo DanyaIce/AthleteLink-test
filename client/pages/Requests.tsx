@@ -111,7 +111,7 @@ export default function Requests() {
             </button>
 
             {/* Analytics Icon */}
-            <button onClick={() => navigate('/stats')}>
+            <button onClick={() => navigate("/stats")}>
               <svg
                 className="w-[21px] h-[20px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 20"
@@ -215,7 +215,7 @@ export default function Requests() {
             </div>
 
             {/* Settings Icon */}
-            <button onClick={() => navigate('/settings')}>
+            <button onClick={() => navigate("/settings")}>
               <svg
                 className="w-[21px] h-[22px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 22"

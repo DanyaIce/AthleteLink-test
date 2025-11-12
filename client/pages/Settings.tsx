@@ -27,7 +27,7 @@ export default function Settings() {
 
   const handleDeleteAccount = () => {
     const confirmed = window.confirm(
-      "Вы уверены, что хотите удалить учетную запись? Это действие необратимо."
+      "Вы уверены, что хотите удалить учетную запись? Это действие необратимо.",
     );
     if (confirmed) {
       console.log("Deleting account...");
@@ -317,7 +317,6 @@ export default function Settings() {
                 className="w-full max-w-[526px] h-[45px] rounded-lg bg-[#F9F9F9]/50 px-4 text-black/40 text-base outline-none placeholder:text-black/40"
               />
             </div>
-         
 
             <p className="text-black text-base opacity-80 mb-6 max-w-[526px]">
               Требования: не мене�� 8 символов, не менее 1 заглавной буквы, не
@@ -398,7 +397,6 @@ export default function Settings() {
               />
             </div>
 
-
             <div className="flex gap-4 items-center  mb-6">
               <button
                 onClick={handleSaveSecretQuestion}
@@ -416,9 +414,8 @@ export default function Settings() {
                 Выйти
               </button>
             </div>
-        
+
             <div className="flex gap-4 items-center justify-end ">
-              
               <button
                 onClick={handleDeleteAccount}
                 className="w-[257px] h-[38px] rounded-lg bg-[#B52626] text-white text-base text-center"
@@ -428,9 +425,6 @@ export default function Settings() {
             </div>
 
             <div className="flex justify-between items-end">
-              
-              
-
               <p className="text-black text-base opacity-80">
                 App Version: 0.1 Alphadev 13.10.25
               </p>

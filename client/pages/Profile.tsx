@@ -63,7 +63,7 @@ export default function Profile() {
             </div>
 
             {/* Analytics Icon */}
-            <button onClick={() => navigate('/stats')}>
+            <button onClick={() => navigate("/stats")}>
               <svg
                 className="w-[21px] h-[20px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 20"
@@ -118,7 +118,7 @@ export default function Profile() {
             </svg>
 
             {/* Messages Icon */}
-            <button onClick={() => navigate('/requests')}>
+            <button onClick={() => navigate("/requests")}>
               <svg
                 className="w-[21px] h-[21px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 21"
@@ -166,7 +166,7 @@ export default function Profile() {
             </button>
 
             {/* Settings Icon */}
-            <button onClick={() => navigate('/settings')}>
+            <button onClick={() => navigate("/settings")}>
               <svg
                 className="w-[21px] h-[22px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 22"

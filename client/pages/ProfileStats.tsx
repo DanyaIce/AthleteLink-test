@@ -143,7 +143,7 @@ export default function ProfileStats() {
             </button>
 
             {/* Settings Icon */}
-            <button onClick={() => navigate('/settings')}>
+            <button onClick={() => navigate("/settings")}>
               <svg
                 className="w-[21px] h-[22px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 22"
@@ -254,12 +254,14 @@ export default function ProfileStats() {
             <h2 className="text-black text-[46px] font-medium mb-4">
               Спортивный престиж
             </h2>
-            
+
             {/* Description */}
             <p className="text-black/80 text-base mb-6 max-w-[710px]">
-              Зарабатывайте опыт в товарищеских/рейтинговых встречах, чтобы повышать уровень!
+              Зарабатывайте опыт в товарищеских/рейтинговых встречах, чтобы
+              повышать уровень!
               <br />
-              До следующего уровня престижа: {USER_STATS.nextLevelXP} очков опыта
+              До следующего уровня престижа: {USER_STATS.nextLevelXP} очков
+              опыта
             </p>
 
             {/* Progress Bar Section */}
@@ -268,18 +270,22 @@ export default function ProfileStats() {
                 className="h-[46px] rounded-[50px] border-[3px] border-black 
              bg-gradient-to-r from-[#4986F9] via-[#2A387B] to-black 
              shadow-[0_6px_4px_4px_rgba(0,0,0,0.33)] relative overflow-hidden 
-             max-w-[90%] mx-auto"  // <-- Адаптивность через max-w-[90%] и mx-auto
+             max-w-[90%] mx-auto" // <-- Адаптивность через max-w-[90%] и mx-auto
               >
                 <div
                   className="h-full bg-gradient-to-r from-[#4986F9] to-[#2A387B] 
                rounded-[5000px]"
-                  style={{ width: `${(USER_STATS.currentXP / USER_STATS.maxXP) * 100}%` }}
+                  style={{
+                    width: `${(USER_STATS.currentXP / USER_STATS.maxXP) * 100}%`,
+                  }}
                 ></div>
               </div>
-              
+
               {/* Level indicator triangle and badge */}
-              <div className="absolute top-[calc(46pxpx)] left-1/2 -translate-x-1/2 
-             flex flex-col items-center" >
+              <div
+                className="absolute top-[calc(46pxpx)] left-1/2 -translate-x-1/2 
+             flex flex-col items-center"
+              >
                 <svg
                   className="w-[27px] h-[32px] drop-shadow-[0_5px_4px_rgba(0,0,0,0.75)]"
                   viewBox="0 0 32 33"
@@ -293,20 +299,30 @@ export default function ProfileStats() {
                     strokeWidth="1.5"
                   />
                   <defs>
-                    <linearGradient id="paint0_linear" x1="15.6914" y1="0" x2="15.6914" y2="32" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#D3D3D3"/>
-                      <stop offset="1" stopColor="#EBEBEB"/>
+                    <linearGradient
+                      id="paint0_linear"
+                      x1="15.6914"
+                      y1="0"
+                      x2="15.6914"
+                      y2="32"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#D3D3D3" />
+                      <stop offset="1" stopColor="#EBEBEB" />
                     </linearGradient>
                   </defs>
                 </svg>
-                
+
                 <div className="bg-[#3462AB] rounded-lg px-3 py-1 text-white text-sm text-center drop-shadow-[0_5px_4px_rgba(0,0,0,0.75)] mt-1">
                   {USER_STATS.currentXP}/{USER_STATS.maxXP}
                 </div>
               </div>
-              
+
               {/* Level number */}
-              <div className="absolute top-[-19px] right-[170px] text-white text-[50px] font-bold stroke-black stroke-[4px]" style={{ WebkitTextStroke: '4px black' }}>
+              <div
+                className="absolute top-[-19px] right-[170px] text-white text-[50px] font-bold stroke-black stroke-[4px]"
+                style={{ WebkitTextStroke: "4px black" }}
+              >
                 {USER_STATS.currentLevel}
               </div>
             </div>
@@ -323,14 +339,14 @@ export default function ProfileStats() {
                     className="w-[299px] h-[298px] object-contain"
                   />
                 </div>
-                
+
                 {/* Roman Numeral */}
-                <div 
+                <div
                   className="text-[#760000] text-[100px] font-bold text-center mt-48"
-                  style={{ 
-                    WebkitTextStroke: '3px black',
-                    textShadow: '0 10px 4px rgba(0, 0, 0, 0.50)',
-                    fontFamily: 'Piazzolla, serif'
+                  style={{
+                    WebkitTextStroke: "3px black",
+                    textShadow: "0 10px 4px rgba(0, 0, 0, 0.50)",
+                    fontFamily: "Piazzolla, serif",
                   }}
                 >
                   {USER_STATS.rankRomanNumeral}
@@ -361,7 +377,10 @@ export default function ProfileStats() {
 
                 <div className="space-y-4">
                   {USER_STATS.recentGames.map((game) => (
-                    <div key={game.id} className="border-[3px] border-black rounded-[55px] p-4">
+                    <div
+                      key={game.id}
+                      className="border-[3px] border-black rounded-[55px] p-4"
+                    >
                       <div className="border-[3px] border-black rounded-[50px] px-4 py-3 mb-2">
                         <p className="text-black text-sm">
                           {game.date} - {game.sport}
@@ -370,9 +389,7 @@ export default function ProfileStats() {
                         </p>
                       </div>
                       <div className="border-[3px] border-black rounded-[50px] px-4 py-3">
-                        <p className="text-white text-sm">
-                          {game.result}
-                        </p>
+                        <p className="text-white text-sm">{game.result}</p>
                       </div>
                     </div>
                   ))}
@@ -388,7 +405,7 @@ export default function ProfileStats() {
                 <p className="text-black text-2xl font-medium opacity-80">
                   Сейчас в рейтинге Вы выглядите так:
                 </p>
-                
+
                 <div className="rounded-[55px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] p-6">
                   <div className="rounded-[50px] border-[3px] border-black p-4 flex items-center gap-4">
                     <img
@@ -396,19 +413,31 @@ export default function ProfileStats() {
                       alt="Profile"
                       className="w-[58px] h-[58px] rounded-full object-cover"
                     />
-                    
+
                     <div className="flex-1">
-                      <h4 className="text-white text-base font-bold" style={{ WebkitTextStroke: '1px black' }}>
+                      <h4
+                        className="text-white text-base font-bold"
+                        style={{ WebkitTextStroke: "1px black" }}
+                      >
                         {USER_STATS.rankingName}
                       </h4>
-                      <p className="text-xs font-bold bg-gradient-to-b from-[#A2E1B1] via-[#AE349C] to-white bg-clip-text text-transparent" style={{ WebkitTextStroke: '1px black' }}>
+                      <p
+                        className="text-xs font-bold bg-gradient-to-b from-[#A2E1B1] via-[#AE349C] to-white bg-clip-text text-transparent"
+                        style={{ WebkitTextStroke: "1px black" }}
+                      >
                         {USER_STATS.rankingTitle}
                         <br />
-                        <span className="text-white">Уровень опыта: {USER_STATS.rankingLevel} ({USER_STATS.rankingXP})</span>
+                        <span className="text-white">
+                          Уровень опыта: {USER_STATS.rankingLevel} (
+                          {USER_STATS.rankingXP})
+                        </span>
                       </p>
                     </div>
 
-                    <div className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '1px black' }}>
+                    <div
+                      className="text-white text-2xl font-bold"
+                      style={{ WebkitTextStroke: "1px black" }}
+                    >
                       {USER_STATS.rankingPosition}
                     </div>
                   </div>
