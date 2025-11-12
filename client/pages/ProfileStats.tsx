@@ -261,7 +261,7 @@ export default function ProfileStats() {
             </p>
 
             {/* Progress Bar Section */}
-            <div className="relative mb-12">
+            <div className="relative mb-112">
               <div
                 className="h-[46px] rounded-[50px] border-[3px] border-black 
              bg-gradient-to-r from-[#4986F9] via-[#2A387B] to-black 
