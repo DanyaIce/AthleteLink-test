@@ -1,44 +1,20 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { USER_STATS } from "@/constants/statsConstants";
 
-export default function Profile() {
+export default function ProfileStats() {
   const navigate = useNavigate();
-  const [fullName, setFullName] = useState("Захар Смирнов");
-  const [username, setUsername] = useState("pauchuck");
-  const [gender, setGender] = useState("");
-  const [city, setCity] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [telegram, setTelegram] = useState("@Lovely_Specty");
-  const [email] = useState("alexarawles@gmail.com");
-
-  const [showGenderDropdown, setShowGenderDropdown] = useState(false);
-  const [showCityDropdown, setShowCityDropdown] = useState(false);
-  const [showBirthdateDropdown, setShowBirthdateDropdown] = useState(false);
-  const [showTelegramDropdown, setShowTelegramDropdown] = useState(false);
-
-  const handleSaveSettings = () => {
-    console.log("Saving settings:", {
-      fullName,
-      username,
-      gender,
-      city,
-      birthdate,
-      telegram,
-    });
-  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02]">
-      <div className="flex h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
+      <div className="flex min-h-screen">
         {/* Sidebar */}
         <div className="w-[76px] border-r-2 border-[#5F5C5C] relative flex flex-col items-center pt-8 gap-12">
           {/* Navigation Icons */}
           <div className="space-y-8 flex flex-col items-center mt-96">
-            {/* Dashboard Icon - Active */}
-            <div className="relative">
-              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10 mt-6 "></div>
+            {/* Dashboard Icon */}
+            <button onClick={() => navigate("/profile")}>
               <svg
-                className="w-[21px] h-[22px] relative z-10 mt-10"
+                className="w-[21px] h-[22px] opacity-50 hover:opacity-100 transition-opacity mt-10"
                 viewBox="0 0 21 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,12 +36,13 @@ export default function Profile() {
                   fill="white"
                 />
               </svg>
-            </div>
+            </button>
 
-            {/* Analytics Icon */}
-            <button onClick={() => navigate('/stats')}>
+            {/* Analytics Icon - Active */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10 mt-[-0.99rem]"></div>
               <svg
-                className="w-[21px] h-[20px] opacity-50 hover:opacity-100 transition-opacity"
+                className="w-[21px] h-[20px] relative z-10"
                 viewBox="0 0 21 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +62,7 @@ export default function Profile() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </div>
 
             {/* Medal Icon */}
             <svg
@@ -118,7 +95,7 @@ export default function Profile() {
             </svg>
 
             {/* Messages Icon */}
-            <button onClick={() => navigate('/requests')}>
+            <button onClick={() => navigate("/requests")}>
               <svg
                 className="w-[21px] h-[21px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 21"
@@ -193,15 +170,15 @@ export default function Profile() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-7">
+        <div className="flex-1 p-7 overflow-y-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-12">
             <div>
               <h1 className="text-[#C9D2FF] text-2xl font-medium mb-1">
-                Добрый день, Захар
+                Добрый день, {USER_STATS.userName}
               </h1>
               <p className="text-white text-base font-light">
-                Сб, 11 октября 2025
+                {USER_STATS.currentDate}
               </p>
             </div>
 
@@ -262,244 +239,186 @@ export default function Profile() {
 
               {/* Profile Picture */}
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/000c31178b1986558f577f90ead0f3bed101a8c7?width=94"
+                src={`${USER_STATS.profileImage}?width=94`}
                 alt="Profile"
-                className="w-[47px] h-[44px] rounded-[10px]"
+                className="w-[47px] h-[44px] rounded-[10px] object-cover"
               />
             </div>
           </div>
 
-          {/* Profile Card */}
-          <div className="rounded-[10px] overflow-hidden ">
-            {/* Header Section */}
-            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#001AFF]/30 opacity-50 relative ">
-              <div className="flex items-center px-7 py-8 gap-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/344dcf4b50f86e9e2496c7dbc315e853b4b8c063?width=178"
-                  alt={fullName}
-                  className="w-[89px] h-[86px] rounded-full absolute left-7 top-[100px] mt-6"
-                />
-                <div className="ml-[120px] mt-28">
-                  <h2 className="text-black text-xl font-medium">{fullName}</h2>
-                  <p className="text-black/50 text-base">{email}</p>
-                </div>
-                <button
-                  onClick={handleSaveSettings}
-                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base mt-32"
+          {/* Main Content Area */}
+          <div className="rounded-[10px] bg-white/50 p-8 relative min-h-[850px]">
+            {/* Title */}
+            <h2 className="text-black text-[46px] font-medium mb-4">
+              Спортивный престиж
+            </h2>
+            
+            {/* Description */}
+            <p className="text-black/80 text-base mb-6 max-w-[710px]">
+              Зарабатывайте опыт в товарищеских/рейтинговых встречах, чтобы повышать уровень!
+              <br />
+              До следующего уровня престижа: {USER_STATS.nextLevelXP} очков опыта
+            </p>
+
+            {/* Progress Bar Section */}
+            <div className="relative mb-12">
+              <div
+                className="h-[46px] rounded-[50px] border-[3px] border-black 
+             bg-gradient-to-r from-[#4986F9] via-[#2A387B] to-black 
+             shadow-[0_6px_4px_4px_rgba(0,0,0,0.33)] relative overflow-hidden 
+             max-w-[90%] mx-auto"  // <-- Адаптивность через max-w-[90%] и mx-auto
+              >
+                <div
+                  className="h-full bg-gradient-to-r from-[#4986F9] to-[#2A387B] 
+               rounded-[5000px]"
+                  style={{ width: `${(USER_STATS.currentXP / USER_STATS.maxXP) * 100}%` }}
+                ></div>
+              </div>
+              
+              {/* Level indicator triangle and badge */}
+              <div className="absolute top-[calc(46pxpx)] left-1/2 -translate-x-1/2 
+             flex flex-col items-center" >
+                <svg
+                  className="w-[27px] h-[32px] drop-shadow-[0_5px_4px_rgba(0,0,0,0.75)]"
+                  viewBox="0 0 32 33"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  Сохранить настройки
-                </button>
+                  <path
+                    d="M15.6914 0L27.3827 24H4.00006L15.6914 0Z"
+                    fill="url(#paint0_linear)"
+                    stroke="black"
+                    strokeWidth="1.5"
+                  />
+                  <defs>
+                    <linearGradient id="paint0_linear" x1="15.6914" y1="0" x2="15.6914" y2="32" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#D3D3D3"/>
+                      <stop offset="1" stopColor="#EBEBEB"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                
+                <div className="bg-[#3462AB] rounded-lg px-3 py-1 text-white text-sm text-center drop-shadow-[0_5px_4px_rgba(0,0,0,0.75)] mt-1">
+                  {USER_STATS.currentXP}/{USER_STATS.maxXP}
+                </div>
+              </div>
+              
+              {/* Level number */}
+              <div className="absolute top-[-19px] right-[170px] text-white text-[50px] font-bold stroke-black stroke-[4px]" style={{ WebkitTextStroke: '4px black' }}>
+                {USER_STATS.currentLevel}
               </div>
             </div>
 
-            {/* Form Section */}
-            <div className="bg-white/50 p-8 min-h-[600px]">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                {/* Full Name */}
-                <div>
-                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
-                    Фамилия и имя
-                  </label>
-                  <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Захар Смирнов"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
+            {/* Three Column Layout */}
+            <div className="grid grid-cols-3 gap-6 mt-20">
+              {/* Left Card - Best Sport */}
+              <div className="rounded-[55px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] shadow-[0_14px_4px_0_rgba(0,0,0,0.50)] p-6 flex flex-col items-center relative overflow-visible ">
+                {/* Badge Image positioned above the card */}
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 rotate-10 transform-origin-center scale-125">
+                  <img
+                    src={`${USER_STATS.badgeImage}?width=598 `}
+                    alt="Badge"
+                    className="w-[299px] h-[298px] object-contain"
                   />
                 </div>
-
-                {/* Username */}
-                <div>
-                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
-                    Имя пользователя
-                  </label>
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="pauchuck"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
-                  />
+                
+                {/* Roman Numeral */}
+                <div 
+                  className="text-[#760000] text-[100px] font-bold text-center mt-48"
+                  style={{ 
+                    WebkitTextStroke: '3px black',
+                    textShadow: '0 10px 4px rgba(0, 0, 0, 0.50)',
+                    fontFamily: 'Piazzolla, serif'
+                  }}
+                >
+                  {USER_STATS.rankRomanNumeral}
                 </div>
 
-                {/* Gender */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Пол
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={gender}
-                      onChange={(e) => setGender(e.target.value)}
-                      placeholder="Выберите пол"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() => setShowGenderDropdown(!showGenderDropdown)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[22px] h-[21px] opacity-50"
-                        viewBox="0 0 22 21"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.2602 7.83124L12.2836 13.5362C11.5777 14.21 10.4227 14.21 9.7169 13.5362L3.74023 7.83124"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                <h3 className="text-[#D9D9D9] text-[32px] font-light text-center mt-8">
+                  Ваш лучший спорт: {USER_STATS.bestSport}
+                </h3>
 
-                {/* City */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Город
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Введите или начните поиск через выпадающее меню"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() => setShowCityDropdown(!showCityDropdown)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[20px] h-[21px] opacity-50"
-                        viewBox="0 0 20 21"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.5999 7.83124L11.1666 13.5362C10.5249 14.21 9.4749 14.21 8.83324 13.5362L3.3999 7.83124"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                <p className="text-[#D9D9D9] text-xl text-center mt-4">
+                  Ранг: {USER_STATS.sportRank} ({USER_STATS.sportRankProgress})
+                  <br />
+                  Глобальный рейтинг: {USER_STATS.globalRanking}
+                </p>
 
-                {/* Birthdate */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Дата рождения
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={birthdate}
-                      onChange={(e) => setBirthdate(e.target.value)}
-                      placeholder="Введите в формате ДД.ММ.ГГГГ"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() =>
-                        setShowBirthdateDropdown(!showBirthdateDropdown)
-                      }
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[22px] h-[20px] opacity-50"
-                        viewBox="0 0 22 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.2602 7.45831L12.2836 12.8916C11.5777 13.5333 10.4227 13.5333 9.7169 12.8916L3.74023 7.45831"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Telegram */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Идентификатор пользователя в Telegram
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={telegram}
-                      onChange={(e) => setTelegram(e.target.value)}
-                      placeholder="@Lovely_Specty"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() =>
-                        setShowTelegramDropdown(!showTelegramDropdown)
-                      }
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[20px] h-[20px] opacity-50"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.5999 7.45831L11.1666 12.8916C10.5249 13.5333 9.4749 13.5333 8.83324 12.8916L3.3999 7.45831"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                <p className="text-[#D9D9D9] text-xl text-center mt-4">
+                  Всего побед: {USER_STATS.totalWins}
+                  <br />
+                  Win Rate: {USER_STATS.winRate}
+                </p>
               </div>
 
-              {/* Email Section */}
-              <div className="mt-12">
-                <h3 className="text-black text-lg font-medium mb-4">
-                  Адрес электронной почты
+              {/* Middle Card - Recent Games */}
+              <div className="rounded-[55px] border-[3px] border-black bg-[#4986F9]/40 shadow-[0_14px_4px_0_rgba(0,0,0,0.50)] p-6">
+                <h3 className="text-black text-[30px] text-center mb-6">
+                  Последние игры ({USER_STATS.recentGames.length})
                 </h3>
-                <div className="flex items-start gap-4">
-                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-[23px] h-[20px]"
-                      viewBox="0 0 23 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M16.2915 2.91669H6.70817C3.83317 2.91669 1.9165 4.16669 1.9165 7.08335V12.9167C1.9165 15.8334 3.83317 17.0834 6.70817 17.0834H16.2915C19.1665 17.0834 21.0832 15.8334 21.0832 12.9167V7.08335C21.0832 4.16669 19.1665 2.91669 16.2915 2.91669ZM16.7419 7.99169L13.7423 10.075C13.1098 10.5167 12.3048 10.7334 11.4998 10.7334C10.6948 10.7334 9.88025 10.5167 9.25734 10.075L6.25775 7.99169C5.95109 7.77502 5.90317 7.37502 6.14275 7.10835C6.39192 6.84169 6.84234 6.79169 7.149 7.00835L10.1486 9.09169C10.8769 9.60002 12.1132 9.60002 12.8415 9.09169L15.8411 7.00835C16.1478 6.79169 16.6078 6.83335 16.8473 7.10835C17.0965 7.37502 17.0486 7.77502 16.7419 7.99169Z"
-                        fill="#4182F9"
-                      />
-                    </svg>
+
+                <div className="space-y-4">
+                  {USER_STATS.recentGames.map((game) => (
+                    <div key={game.id} className="border-[3px] border-black rounded-[55px] p-4">
+                      <div className="border-[3px] border-black rounded-[50px] px-4 py-3 mb-2">
+                        <p className="text-black text-sm">
+                          {game.date} - {game.sport}
+                          <br />
+                          Матч 1х1 против {game.opponent}
+                        </p>
+                      </div>
+                      <div className="border-[3px] border-black rounded-[50px] px-4 py-3">
+                        <p className="text-white text-sm">
+                          {game.result}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button className="w-full mt-6 bg-[#4182F9] text-white text-sm rounded-lg px-6 py-2 drop-shadow-[0_8px_4px_rgba(0,0,0,0.50)]">
+                  Как мой профиль видят другие люди?
+                </button>
+              </div>
+
+              {/* Right Card - Current Ranking */}
+              <div className="flex flex-col gap-6">
+                <p className="text-black text-2xl font-medium opacity-80">
+                  Сейчас в рейтинге Вы выглядите так:
+                </p>
+                
+                <div className="rounded-[55px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] p-6">
+                  <div className="rounded-[50px] border-[3px] border-black p-4 flex items-center gap-4">
+                    <img
+                      src={`${USER_STATS.rankingProfileImage}?width=116`}
+                      alt="Profile"
+                      className="w-[58px] h-[58px] rounded-full object-cover"
+                    />
+                    
+                    <div className="flex-1">
+                      <h4 className="text-white text-base font-bold" style={{ WebkitTextStroke: '1px black' }}>
+                        {USER_STATS.rankingName}
+                      </h4>
+                      <p className="text-xs font-bold bg-gradient-to-b from-[#A2E1B1] via-[#AE349C] to-white bg-clip-text text-transparent" style={{ WebkitTextStroke: '1px black' }}>
+                        {USER_STATS.rankingTitle}
+                        <br />
+                        <span className="text-white">Уровень опыта: {USER_STATS.rankingLevel} ({USER_STATS.rankingXP})</span>
+                      </p>
+                    </div>
+
+                    <div className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '1px black' }}>
+                      {USER_STATS.rankingPosition}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-black text-base">{email}</p>
-                    <p className="text-black/50 text-base">
-                      Изменен 10 дней назад
-                    </p>
-                  </div>
-                  <button className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base">
-                    Изменить адрес эл. почты
-                  </button>
+                </div>
+
+                {/* Cat Image */}
+                <div className="flex justify-center">
+                  <img
+                    src={`${USER_STATS.catImage}?width=720`}
+                    alt="Cat"
+                    className="w-[360px] h-[360px] object-contain"
+                  />
                 </div>
               </div>
             </div>
