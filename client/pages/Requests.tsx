@@ -249,10 +249,10 @@ export default function Requests() {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h1 className="text-[#C9D2FF] text-2xl font-medium mb-1">
-                Добрый д��нь, Захар
+                Добрый день, Захар
               </h1>
               <p className="text-white text-base font-light">
-                Сб, 11 октяб��я 2025
+                Сб, 11 октября 2025
               </p>
             </div>
 
