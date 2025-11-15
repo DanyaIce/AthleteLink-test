@@ -406,7 +406,7 @@ export default function ProfileStats() {
               {/* Right Card - Current Ranking */}
               <div className="flex flex-col gap-6">
                 <p className="text-black text-2xl font-medium opacity-80">
-                  Сейчас в рейт��нге Вы выглядите так:
+                  Сейчас в рейтинге Вы выглядите так:
                 </p>
 
                 <div className="rounded-[55px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] p-6">
